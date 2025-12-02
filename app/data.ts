@@ -18,6 +18,9 @@ export const people: Person[] = [
   { name: "Fluss", timezone: "CET+1" },
   { name: "Rat", timezone: "CET+1" },
   { name: "Naveeb", timezone: "CET+1" },
+  { name: "Gine", timezone: "GMT+8" },
+  { name: "Penguin", timezone: "GMT+7" },
+  { name: "Asd", timezone: "GMT+8" },
 ];
 
 export const scheduleEvents: ScheduleEvent[] = [

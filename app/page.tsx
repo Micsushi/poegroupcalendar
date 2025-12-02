@@ -51,7 +51,7 @@ export default function Home() {
               <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
                 {person.name}
               </h2>
-              <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+              <p className="mb-4 text-base font-medium text-gray-600 dark:text-gray-400">
                 {person.timezone.replace(/_/g, " ")}
               </p>
               <div className="text-3xl font-mono font-bold text-indigo-600 dark:text-indigo-400">

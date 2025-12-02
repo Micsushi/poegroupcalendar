@@ -9,9 +9,8 @@ export function formatTimeInTimezone(timezone: string): string {
   
   const abbrevWithOffsetMatch = timezone.match(/^([A-Z]+)([+-]\d+)$/);
   if (abbrevWithOffsetMatch) {
-    const abbrev = abbrevWithOffsetMatch[1];
     const offsetHours = parseInt(abbrevWithOffsetMatch[2]);
-    return `${formatTimeWithOffset(now, offsetHours)} ${abbrev}`;
+    return formatTimeWithOffset(now, offsetHours);
   }
   
   const abbreviationMap: Record<string, number> = {
@@ -33,7 +32,7 @@ export function formatTimeInTimezone(timezone: string): string {
   
   const offset = abbreviationMap[timezone.toUpperCase()];
   if (offset !== undefined) {
-    return `${formatTimeWithOffset(now, offset)} ${timezone.toUpperCase()}`;
+    return formatTimeWithOffset(now, offset);
   }
   
   try {
@@ -44,12 +43,8 @@ export function formatTimeInTimezone(timezone: string): string {
       second: "2-digit",
       hour12: true,
     });
-    const timeZoneName = new Intl.DateTimeFormat("en-US", {
-      timeZone: timezone,
-      timeZoneName: "short",
-    }).formatToParts(now).find((part) => part.type === "timeZoneName")?.value || "";
     
-    return `${formatter.format(now)} ${timeZoneName}`;
+    return formatter.format(now);
   } catch (error) {
     return "Invalid timezone";
   }

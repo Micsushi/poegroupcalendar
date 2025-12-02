@@ -1,0 +1,214 @@
+export interface Person {
+  name: string;
+  timezone: string;
+}
+
+export interface ScheduleEvent {
+  name: string;
+  day: number;
+  startHour: number;
+  startMinute: number;
+  endHour: number;
+  endMinute: number;
+  color?: string;
+}
+
+export const people: Person[] = [
+  { name: "Sushi", timezone: "MST" },
+  { name: "Fluss", timezone: "CET+1" },
+  { name: "Rat", timezone: "CET+1" },
+  { name: "Naveeb", timezone: "CET+1" },
+];
+
+export const scheduleEvents: ScheduleEvent[] = [
+  {
+    name: "Example Farm session",
+    day: 1,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 1,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 1,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 2,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 2,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 2,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 3,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 3,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 3,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 4,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 4,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 4,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },    
+  {
+    name: "Example Farm session",
+    day: 5,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 5,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },  
+  {
+    name: "Example Farm session",
+    day: 5,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },      
+  {
+    name: "Example Farm session",
+    day: 6,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 6,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 6,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 7,
+    startHour: 8,
+    startMinute: 0,
+    endHour: 12,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 7,
+    startHour: 13,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+  {
+    name: "Example Farm session",
+    day: 7,
+    startHour: 18,
+    startMinute: 0,
+    endHour: 22,
+    endMinute: 30,
+    color: "#3b82f6",
+  },
+];
+

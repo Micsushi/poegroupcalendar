@@ -24,6 +24,8 @@ export default function Scheduler() {
     const events: Array<ScheduleEvent & {
       isSplit?: boolean;
       isSecondPart?: boolean;
+      displayEndHour?: number;
+      displayEndMinute?: number;
     }> = [];
 
     scheduleEvents.forEach((event) => {
@@ -48,6 +50,23 @@ export default function Scheduler() {
       if (endDay < 0) endDay += 7;
       if (endDay >= 7) endDay -= 7;
 
+      const endsAtMidnight = endConverted.hour === 0 && endConverted.minute === 0;
+      
+      if (endsAtMidnight && endDay !== convertedDay) {
+        if (convertedDay === dayIndex) {
+          events.push({
+            ...event,
+            startHour: startConverted.hour,
+            startMinute: startConverted.minute,
+            endHour: 24,
+            endMinute: 0,
+            displayEndHour: 0,
+            displayEndMinute: 0,
+          });
+        }
+        return;
+      }
+
       const startTotalMinutes = startConverted.hour * 60 + startConverted.minute;
       const endTotalMinutes = endConverted.hour * 60 + endConverted.minute;
       const crossesMidnight = endTotalMinutes < startTotalMinutes || endDay !== convertedDay;
@@ -58,15 +77,17 @@ export default function Scheduler() {
             ...event,
             startHour: startConverted.hour,
             startMinute: startConverted.minute,
-            endHour: 23,
-            endMinute: 59,
+            endHour: 24,
+            endMinute: 0,
+            displayEndHour: 0,
+            displayEndMinute: 0,
             isSplit: true,
             isSecondPart: false,
           });
         }
 
         const secondPartDay = endDay !== convertedDay ? endDay : (convertedDay + 1) % 7;
-        if (secondPartDay === dayIndex) {
+        if (secondPartDay === dayIndex && (endConverted.hour > 0 || endConverted.minute > 0)) {
           events.push({
             ...event,
             startHour: 0,
@@ -101,7 +122,7 @@ export default function Scheduler() {
     color?: string;
   }) => {
     const startMinutes = event.startHour * 60 + event.startMinute;
-    const endMinutes = event.endHour * 60 + event.endMinute;
+    const endMinutes = event.endHour === 24 ? 24 * 60 : event.endHour * 60 + event.endMinute;
     const duration = endMinutes - startMinutes;
     
     const top = (startMinutes / 60) * 60;
@@ -204,20 +225,22 @@ export default function Scheduler() {
                       />
                     ))}
                     
-                    {dayEvents.map((event, eventIndex) => {
+                    {dayEvents.map((event) => {
                       const style = getEventStyle(event);
                       const tooSmall = isEventTooSmall(parseFloat(style.height as string));
                       const eventKey = `${event.name}-${event.day}-${event.startHour}-${event.startMinute}-${event.endHour}-${event.endMinute}-${event.isSecondPart ? 'part2' : 'part1'}-${dayIndex}`;
+                      const displayEndHour = event.displayEndHour !== undefined ? event.displayEndHour : event.endHour;
+                      const displayEndMinute = event.displayEndMinute !== undefined ? event.displayEndMinute : event.endMinute;
                       return (
                         <div
                           key={eventKey}
-                          className="absolute left-1 right-1 rounded-md px-2 py-1 text-xs font-medium text-white shadow-md transition-all hover:shadow-lg hover:z-10 overflow-hidden"
+                          className="absolute left-2 right-2 rounded-md px-2 py-1 text-xs font-medium text-white shadow-md transition-all hover:shadow-lg hover:z-10 overflow-hidden"
                           style={style}
                         >
                           <div className="font-semibold truncate">{event.name}</div>
                           {!tooSmall && (
                             <div className="text-xs opacity-90 truncate">
-                              {formatTime(event.startHour, event.startMinute)} - {formatTime(event.endHour, event.endMinute)}
+                              {formatTime(event.startHour, event.startMinute)} - {formatTime(displayEndHour, displayEndMinute)}
                             </div>
                           )}
                         </div>

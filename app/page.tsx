@@ -38,6 +38,12 @@ export default function Home() {
     }
   };
 
+  const sortedPeople = [...people].sort((a, b) => {
+    const offsetDiff = getTimezoneOffsetHours(a.timezone) - getTimezoneOffsetHours(b.timezone);
+    if (offsetDiff !== 0) return offsetDiff;
+    return a.name.localeCompare(b.name);
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-8">
@@ -54,7 +60,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {people.map((person) => (
+          {sortedPeople.map((person) => (
             <div
               key={person.name}
               className="relative rounded-xl bg-white p-6 shadow-lg transition-shadow hover:shadow-xl dark:bg-gray-800"

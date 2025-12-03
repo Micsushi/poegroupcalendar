@@ -3,15 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import { scheduleEvents, people, type ScheduleEvent } from "../data";
-import { convertEventTime } from "../timezone-utils";
+import { convertEventTime, getTimezoneOffsetHours } from "../timezone-utils";
 
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const HOURS = Array.from({ length: 24 }, (_, i) => i);
 
 const BASE_TIMEZONE = "MST";
 
+const sortedPeople = [...people].sort((a, b) => {
+  const offsetDiff = getTimezoneOffsetHours(a.timezone) - getTimezoneOffsetHours(b.timezone);
+  if (offsetDiff !== 0) return offsetDiff;
+  return a.name.localeCompare(b.name);
+});
+
 export default function Scheduler() {
-  const [selectedTimezone, setSelectedTimezone] = useState(people[0]?.timezone || "UTC+0");
+  const [selectedTimezone, setSelectedTimezone] = useState(sortedPeople[0]?.timezone || "UTC+0");
 
   const formatTime = (hour: number, minute: number) => {
     if (hour === 0) return `12:${minute.toString().padStart(2, "0")} AM`;
@@ -158,7 +164,7 @@ export default function Scheduler() {
                 onChange={(e) => setSelectedTimezone(e.target.value)}
                 className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-50 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
               >
-                {people.map((person) => (
+                {sortedPeople.map((person) => (
                   <option key={person.name} value={person.timezone}>
                     {person.name} ({person.timezone})
                   </option>

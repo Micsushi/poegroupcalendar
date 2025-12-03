@@ -125,8 +125,9 @@ export default function Scheduler() {
     const endMinutes = event.endHour === 24 ? 24 * 60 : event.endHour * 60 + event.endMinute;
     const duration = endMinutes - startMinutes;
     
-    const top = (startMinutes / 60) * 60;
-    const height = Math.max((duration / 60) * 60, 20);
+    const gap = 4;
+    const top = (startMinutes / 60) * 60 + gap;
+    const height = Math.max((duration / 60) * 60 - gap * 2, 20);
     
     return {
       top: `${top}px`,

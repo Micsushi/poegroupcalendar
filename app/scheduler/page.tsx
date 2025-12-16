@@ -35,16 +35,17 @@ export default function Scheduler() {
     }> = [];
 
     scheduleEvents.forEach((event) => {
+      const eventTimezone = event.timezone || BASE_TIMEZONE;
       const startConverted = convertEventTime(
         event.startHour,
         event.startMinute,
-        BASE_TIMEZONE,
+        eventTimezone,
         selectedTimezone
       );
       const endConverted = convertEventTime(
         event.endHour,
         event.endMinute,
-        BASE_TIMEZONE,
+        eventTimezone,
         selectedTimezone
       );
 

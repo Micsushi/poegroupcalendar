@@ -45,7 +45,7 @@ export function formatTimeInTimezone(timezone: string): string {
     });
     
     return formatter.format(now);
-  } catch (error) {
+  } catch {
     return "Invalid timezone";
   }
 }
@@ -60,7 +60,7 @@ function formatTimeWithOffset(date: Date, offsetHours: number): string {
   
   let localHours = Math.floor(totalMinutes / 60);
   let localMinutes = totalMinutes % 60;
-  let localSeconds = utcSeconds;
+  const localSeconds = utcSeconds;
   
   if (localMinutes < 0) {
     localMinutes += 60;

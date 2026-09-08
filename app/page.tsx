@@ -14,7 +14,7 @@ export default function Home() {
       people.forEach((person) => {
         try {
           newTimes[person.name] = formatTimeInTimezone(person.timezone);
-        } catch (error) {
+        } catch {
           newTimes[person.name] = "Error";
         }
       });

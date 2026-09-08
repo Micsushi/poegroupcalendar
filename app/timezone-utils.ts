@@ -64,7 +64,6 @@ function formatTimeWithOffset(date: Date, offsetHours: number): string {
   
   if (localMinutes < 0) {
     localMinutes += 60;
-    localHours -= 1;
   }
   
   if (localHours < 0) {
@@ -133,7 +132,6 @@ export function convertEventTime(
   
   if (targetMins < 0) {
     targetMins += 60;
-    targetHours -= 1;
   }
   
   let dayOffset = 0;

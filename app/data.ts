@@ -30,7 +30,7 @@ export const scheduleEvents: ScheduleEvent[] = [
   { name: "sushi cant play", day: 4, startHour: 3, startMinute: 0, endHour: 12, endMinute: 0, color: "#FF0000" },
   { name: "sushi cant play", day: 5, startHour: 3, startMinute: 0, endHour: 12, endMinute: 0, color: "#FF0000" },
   { name: "sushi cant play", day: 6, startHour: 3, startMinute: 0, endHour: 12, endMinute: 0, color: "#FF0000" },
-  { name: "sushi cant play", day: 7, startHour: 3, startMinute: 0, endHour: 12, endMinute: 0, color: "#FF0000" },
+  { name: "sushi cant play", day: 0, startHour: 3, startMinute: 0, endHour: 12, endMinute: 0, color: "#FF0000" },
   
   // crack cant play: 1am to 8am CET+1 time (red block)
   { name: "crack cant play", day: 1, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
@@ -39,5 +39,5 @@ export const scheduleEvents: ScheduleEvent[] = [
   { name: "crack cant play", day: 4, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
   { name: "crack cant play", day: 5, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
   { name: "crack cant play", day: 6, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
-  { name: "crack cant play", day: 7, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
+  { name: "crack cant play", day: 0, startHour: 1, startMinute: 0, endHour: 8, endMinute: 0, color: "#FF0000", timezone: "CET+1" },
 ];
